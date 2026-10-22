@@ -1,0 +1,74 @@
+$html = @'
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клуб туралы | Samuryq DC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <a class="logo" href="index.html">SAMURYQ<span>DC</span></a>
+    <nav>
+        <a href="index.html">Басты бет</a>
+        <a class="active" href="about.html">Клуб туралы</a>
+        <a href="rating.html">Рейтинг</a>
+        <a href="achievements.html">Жетістіктер</a>
+        <a href="tournaments.html">Турнирлер</a>
+    </nav>
+</header>
+
+<main>
+    <section class="page-content">
+        <p class="tag">БІЗ ТУРАЛЫ</p>
+        <h1 class="page-title">SAMURYQ <span>DEBATE CLUB</span></h1>
+
+        <p class="page-text">
+            Samuryq Debate Club — ойы еркін, сөзі нық,
+            мақсаты биік дебатшылар қауымдастығы.
+        </p>
+
+        <p class="page-text">
+            Біздің мақсатымыз — жастардың сыни ойлауын,
+            шешендік өнерін және пікірталас мәдениетін дамыту.
+        </p>
+
+        <div class="info-grid">
+            <article class="info-card">
+                <h3>Біздің миссиямыз</h3>
+                <p>Дебат арқылы ойлау және сөйлеу қабілетін дамыту.</p>
+            </article>
+            <article class="info-card">
+                <h3>Біздің құндылықтарымыз</h3>
+                <p>Адалдық, құрмет, жауапкершілік және еркін ойлау.</p>
+            </article>
+            <article class="info-card">
+                <h3>Біздің бағыт</h3>
+                <p>Спаррингтер, турнирлер және дебаттық жаттығулар.</p>
+            </article>
+            <article class="info-card">
+                <h3>Біздің ұранымыз</h3>
+                <p>THINK. SPEAK. WIN.</p>
+            </article>
+        </div>
+
+        <br>
+        <a href="index.html" class="button">← БАСТЫ БЕТКЕ</a>
+    </section>
+</main>
+
+<footer>
+    <div class="logo">SAMURYQ<span>DC</span></div>
+    <p>THINK. SPEAK. WIN.</p>
+    <p>© 2026 Samuryq Debate Club</p>
+</footer>
+</body>
+</html>
+'@
+
+[System.IO.File]::WriteAllText(
+    (Join-Path (Get-Location) "about.html"),
+    $html,
+    (New-Object System.Text.UTF
+    

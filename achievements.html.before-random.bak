@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жетістіктер | Samuryq DC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <a class="logo" href="index.html">SAMURYQ<span>DC</span></a>
+    <nav>
+        <a href="index.html">Басты бет</a>
+        <a href="about.html">Клуб туралы</a>
+        <a href="rating.html">Рейтинг</a>
+        <a class="active" href="achievements.html">Жетістіктер</a>
+        <a href="tournaments.html">Турнирлер</a>
+    </nav>
+</header>
+
+<main>
+    <section class="page-content">
+        <p class="tag">OUR ACHIEVEMENTS</p>
+        <h1 class="page-title">БІЗДІҢ <span>ЖЕТІСТІКТЕР</span></h1>
+
+        <p class="page-text">
+            Samuryq Debate Club жетістіктері — клуб мүшелерінің
+            еңбегі, тәжірибесі және үздіксіз дамуының нәтижесі.
+        </p>
+
+        <div class="info-grid">
+            <article class="info-card">
+                <h3>🏆 Турнирлік жетістіктер</h3>
+                <p>
+                    Клуб мүшелерінің турнирлердегі орындары,
+                    финалдық кезеңдері және жеңістері осы жерде жарияланады.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <h3>🎤 Үздік спикерлер</h3>
+                <p>
+                    Турнирлер мен клубтық ойындарда үздік нәтиже
+                    көрсеткен спикерлер туралы ақпарат.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <h3>⚖️ Судьялық жетістіктер</h3>
+                <p>
+                    Дебат турнирлерінде төреші ретінде қатысып,
+                    тәжірибе жинаған клуб мүшелері.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <h3>🤝 Клубтың дамуы</h3>
+                <p>
+                    Жаңа мүшелер, бірлескен жобалар, оқу-жаттығу
+                    жиындары және клуб ұйымдастырған іс-шаралар.
+                </p>
+            </article>
+        </div>
+
+        <br><br>
+        <a href="index.html" class="button">← БАСТЫ БЕТКЕ</a>
+    </section>
+</main>
+
+<footer>
+    <div class="logo">SAMURYQ<span>DC</span></div>
+    <p>THINK. SPEAK. WIN.</p>
+    <p>© 2026 Samuryq Debate Club</p>
+</footer>
+
+</body>
+</html>
+
+

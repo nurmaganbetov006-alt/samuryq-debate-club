@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samuryq DC — Рейтинг</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#070912;--panel:#111525;--red:#ff304f;--blue:#4263ff;--text:#f5f6ff;--muted:#a5abc0;--border:#292e48}
+body{min-height:100vh;background:radial-gradient(ellipse at 80% 20%,#171a3b 0%,transparent 45%),var(--bg);color:var(--text);font-family:Arial,sans-serif}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;padding:22px 5%;border-bottom:1px solid var(--border)}
+.logo{color:var(--text);text-decoration:none;font-size:25px;font-weight:900;letter-spacing:2px}
+.logo span{color:var(--red)}
+nav{display:flex;flex-wrap:wrap;gap:6px}
+nav a{color:#d9dced;text-decoration:none;padding:10px;border-radius:7px;font-size:13px}
+nav a:hover,nav a.active{background:#20243a;color:white}
+main{width:min(1100px,92%);margin:40px auto}
+.tag{color:var(--red);font-size:12px;letter-spacing:4px;font-weight:bold;margin-bottom:15px}
+h1{font-size:clamp(32px,5vw,54px);margin-bottom:15px}
+h1 span{color:var(--red)}
+.intro,.muted{color:var(--muted);line-height:1.7;font-size:14px}
+.intro{margin-bottom:28px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:24px}
+.stat,.panel{background:rgba(17,21,37,.95);border:1px solid var(--border);border-radius:13px;padding:20px}
+.stat p{color:var(--muted);font-size:13px;margin-bottom:10px}
+.stat strong{font-size:28px}
+.panel{margin-bottom:22px}
+.panel h2{font-size:21px;margin-bottom:16px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:480px}
+th,td{text-align:left;padding:13px 10px;border-bottom:1px solid var(--border)}
+th{font-size:12px;color:var(--muted)}
+td{font-size:14px}
+.points{font-weight:bold;font-size:17px}
+.field{margin:14px 0}
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:7px}
+input,select{width:100%;padding:12px;background:#090d1b;border:1px solid #363c59;border-radius:7px;color:white;font-size:14px}
+button{padding:12px 16px;border:0;border-radius:7px;background:linear-gradient(100deg,var(--red),#784cff,var(--blue));color:white;font-weight:bold;cursor:pointer}
+button:hover{filter:brightness(1.12)}
+.secondary{background:#252a42}
+.danger{background:#642538}
+.team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:16px 0}
+.team{background:#090d1b;border:1px solid var(--border);border-radius:10px;padding:15px}
+.team h3{font-size:16px;margin-bottom:12px}
+.team p{font-size:12px;color:var(--muted);margin-bottom:10px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}
+.message{margin-top:12px;color:#9be7b0;font-size:13px;line-height:1.6}
+.error{color:#ff8d9e}
+.hidden{display:none!important}
+.history-item{background:#090d1b;border:1px solid var(--border);border-radius:9px;padding:15px;margin-top:12px}
+.history-item h3{font-size:15px;margin-bottom:10px}
+.history-item p{color:var(--muted);font-size:13px;line-height:1.9}
+footer{text-align:center;padding:25px;color:var(--muted);font-size:12px;border-top:1px solid var(--border)}
+@media(max-width:650px){header{justify-content:center}nav{justify-content:center}.stats{grid-template-columns:1fr}.team-grid{grid-template-columns:1fr}.panel{padding:15px}}
+</style>
+</head>
+<body>
+<header>
+<a class="logo" href="index.html">SAMURYQ<span>DC</span></a>
+<nav>
+<a href="index.html">Басты бет</a>
+<a href="about.html">Клуб туралы</a>
+<a href="rating.html" class="active">Рейтинг</a>
+<a href="achievements.html">Жетістіктер</a>
+<a href="tournaments.html">Турнирлер</a>
+</nav>
+</header>
+
+<main>
+<p class="tag">SAMURYQ DEBATE CLUB</p>
+<h1>КОМАНДАЛЫҚ <span>РЕЙТИНГ</span></h1>
+<p class="intro">Әр командада екі дебатшы бар. Әр раундтан кейін екі қатысушыға да команда алған орынның ұпайы есептеледі.</p>
+
+<section class="stats">
+<div class="stat"><p>Дебатшылар</p><strong id="memberCount">0</strong></div>
+<div class="stat"><p>Ойналған раундтар</p><strong id="roundCount">0</strong></div>
+<div class="stat"><p>Рейтинг көшбасшысының ұпайы</p><strong id="leaderScore">0</strong></div>
+</section>
+
+<section class="panel">
+<h2>🏆 Жеке рейтинг</h2>
+<p class="muted" style="margin-bottom:15px">Әр дебатшының барлық раундтағы ұпайлары қосылады. Бірдей ұпай болса, жеңген раунд саны басымдық береді.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>№</th><th>Дебатшы</th><th>Раунд саны</th><th>1-орын</th><th>Ұпай</th></tr></thead>
+<tbody id="ratingTable"></tbody>
+</table>
+</div>
+<p id="emptyMessage" class="muted" style="margin-top:12px">Әзірге дебатшы тіркелмеген.</p>
+</section>
+
+<section class="panel">
+<h2>🔐 Басқару бөлімі</h2>
+<p class="muted">Қатысушылар мен раундтарды жауапты ұйымдастырушы енгізеді.</p>
+
+<div id="loginBox">
+<div class="field">
+<label for="pinInput">PIN-код</label>
+<input id="pinInput" type="password" placeholder="Басқару PIN-кодын енгіз">
+</div>
+<button id="loginButton" type="button">Кіру</button>
+<p id="loginMessage" class="message error"></p>
+</div>
+
+<div id="adminBox" class="hidden">
+<div class="field">
+<h2>1. Жаңа дебатшы қосу</h2>
+<label for="memberName">Дебатшының аты-жөні</label>
+<input id="memberName" type="text" placeholder="Мысалы: Аян Сәрсен">
+<div class="actions"><button id="addMemberButton" type="button">+ Дебатшы қосу</button></div>
+<p id="memberMessage" class="message"></p>
+</div>
+
+<hr style="border:0;border-top:1px solid #292e48;margin:24px 0">
+
+<h2>2. Раунд нәтижесін енгізу</h2>
+<div class="field">
+<label for="roundTitle">Раундтың немесе турнирдің атауы</label>
+<input id="roundTitle" placeholder="Мысалы: Samuryq Open — 1-раунд">
+</div>
+
+<div class="team-grid">
+<div class="team">
+<h3>🥇 1-орын · 3 ұпай/адам</h3>
+<p>Командадағы екі дебатшыны таңда</p>
+<div class="field"><label for="r1a">1-қатысушы</label><select id="r1a"></select></div>
+<div class="field"><label for="r1b">2-қатысушы</label><select id="r1b"></select></div>
+</div>
+<div class="team">
+<h3>🥈 2-орын · 2 ұпай/адам</h3>
+<p>Командадағы екі дебатшыны таңда</p>
+<div class="field"><label for="r2a">1-қатысушы</label><select id="r2a"></select></div>
+<div class="field"><label for="r2b">2-қатысушы</label><select id="r2b"></select></div>
+</div>
+<div class="team">
+<h3>🥉 3-орын · 1 ұпай/адам</h3>
+<p>Командадағы екі дебатшыны таңда</p>
+<div class="field"><label for="r3a">1-қатысушы</label><select id="r3a"></select></div>
+<div class="field"><label for="r3b">2-қатысушы</label><select id="r3b"></select></div>
+</div>
+<div class="team">
+<h3>4-орын · 0 ұпай</h3>
+<p>Командадағы екі дебатшыны таңда</p>
+<div class="field"><label for="r4a">1-қатысушы</label><select id="r4a"></select></div>
+<div class="field"><label for="r4b">2-қатысушы</label><select id="r4b"></select></div>
+</div>
+</div>
+
+<p class="muted">Бір раундқа 8 бөлек дебатшы керек. Әр орынның екі қатысушысы бірдей ұпай алады.</p>
+<div class="actions">
+<button id="saveRoundButton" type="button">Раундты сақтау және есептеу</button>
+<button id="logoutButton" class="secondary" type="button">Шығу</button>
+</div>
+<p id="roundMessage" class="message"></p>
+
+<hr style="border:0;border-top:1px solid #292e48;margin:24px 0">
+<h2>3. Раундтар тарихы</h2>
+<div id="historyList"></div>
+</div>
+</section>
+</main>
+
+<footer>SAMURYQ DC · THINK. SPEAK. WIN.</footer>
+
+<script>
+const ADMIN_PIN = "2468";
+const STORAGE_KEY = "samuryq_team_rating_v2";
+const RANKS = [
+ {rank:1,points:3,ids:["r1a","r1b"]},
+ {rank:2,points:2,ids:["r2a","r2b"]},
+ {rank:3,points:1,ids:["r3a","r3b"]},
+ {rank:4,points:0,ids:["r4a","r4b"]}
+];
+
+let data = {members:[],rounds:[]};
+let isAdmin = false;
+
+try {
+ const stored = localStorage.getItem(STORAGE_KEY);
+ if (stored) {
+  const parsed = JSON.parse(stored);
+  if (Array.isArray(parsed.members) && Array.isArray(parsed.rounds)) data = parsed;
+ }
+} catch (e) {
+ console.error(e);
+}
+
+function esc(value) {
+ return String(value).replace(/[&<>"']/g, c => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+ }[c]));
+}
+
+function saveData() {
+ try {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  render();
+ } catch(e) {
+  alert("Деректер сақталмады. Браузердің сақтау мүмкіндігін тексер.");
+ }
+}
+
+function standings() {
+ return data.members.map(member => {
+  let score = 0, firsts = 0, rounds = 0;
+  data.rounds.forEach(round => {
+   round.teams.forEach(team => {
+    if (team.memberIds.includes(member.id)) {
+     score += team.points;
+     rounds++;
+     if (team.rank === 1) firsts++;
+    }
+   });
+  });
+  return {...member,score,firsts,rounds};
+ }).sort((a,b) => b.score-a.score || b.firsts-a.firsts || a.name.localeCompare(b.name,"kk"));
+}
+
+function refreshSelects() {
+ const previous = {};
+ RANKS.forEach(group => group.ids.forEach(id => {
+  previous[id] = document.getElementById(id).value;
+ }));
+ const options = '<option value="">Дебатшыны таңда</option>' +
+  data.members.map(m => '<option value="'+esc(m.id)+'">'+esc(m.name)+'</option>').join("");
+ RANKS.forEach(group => group.ids.forEach(id => {
+  const select = document.getElementById(id);
+  select.innerHTML = options;
+  if (data.members.some(m => m.id === previous[id])) select.value = previous[id];
+ }));
+}
+
+function showMessage(id, message, error=false) {
+ const el = document.getElementById(id);
+ el.textContent = message;
+ el.classList.toggle("error", error);
+}
+
+function renderHistory() {
+ const box = document.getElementById("historyList");
+ if (!data.rounds.length) {
+  box.innerHTML = '<p class="muted">Әзірге раунд енгізілмеген.</p>';
+  return;
+ }
+
+ box.innerHTML = data.rounds.slice().reverse().map(round => {
+  const teams = round.teams.slice().sort((a,b)=>a.rank-b.rank).map(team => {
+   const placeText = team.rank === 1 ? "🥇 1-орын" :
+    team.rank === 2 ? "🥈 2-орын" :
+    team.rank === 3 ? "🥉 3-орын" : "4-орын";
+   return '<p><strong>'+placeText+'</strong>: '+
+    esc(team.names.join(" + "))+' — әрқайсысына '+team.points+' ұпай</p>';
+  }).join("");
+  return '<div class="history-item"><h3>'+esc(round.title)+'</h3>'+
+   '<p>'+esc(round.date)+'</p>'+teams+
+   (isAdmin ? '<div class="actions"><button class="danger" data-delete="'+esc(round.id)+'" type="button">Раундты өшіру</button></div>' : '')+
+   '</div>';
+ }).join("");
+
+ box.querySelectorAll("[data-delete]").forEach(button => {
+  button.addEventListener("click", () => {
+   if (!isAdmin) return;
+   const id = button.dataset.delete;
+   const round = data.rounds.find(r=>r.id===id);
+   if (round && confirm('"'+round.title+'" раундын өшіресің бе? Ұпайлар қайта есептеледі.')) {
+    data.rounds = data.rounds.filter(r=>r.id!==id);
+    saveData();
+    showMessage("roundMessage","Раунд өшірілді. Рейтинг қайта есептелді.");
+   }
+  });
+ });
+}
+
+function render() {
+ const rank = standings();
+ document.getElementById("memberCount").textContent = data.members.length;
+ document.getElementById("roundCount").textContent = data.rounds.length;
+ document.getElementById("leaderScore").textContent = rank.length ? rank[0].score : 0;
+ document.getElementById("ratingTable").innerHTML = rank.map((m,i) =>
+  '<tr><td>'+(i+1)+'</td><td><strong>'+esc(m.name)+'</strong></td><td>'+m.rounds+'</td><td>'+m.firsts+'</td><td class="points">'+m.score+'</td></tr>'
+ ).join("");
+ document.getElementById("emptyMessage").classList.toggle("hidden",rank.length>0);
+ refreshSelects();
+ renderHistory();
+}
+
+document.getElementById("loginButton").addEventListener("click",()=>{
+ if(document.getElementById("pinInput").value===ADMIN_PIN){
+  isAdmin=true;
+  document.getElementById("loginBox").classList.add("hidden");
+  document.getElementById("adminBox").classList.remove("hidden");
+  renderHistory();
+  showMessage("loginMessage","");
+ } else showMessage("loginMessage","PIN-код дұрыс емес.",true);
+});
+
+document.getElementById("pinInput").addEventListener("keydown",e=>{
+ if(e.key==="Enter") document.getElementById("loginButton").click();
+});
+
+document.getElementById("logoutButton").addEventListener("click",()=>{
+ isAdmin=false;
+ document.getElementById("adminBox").classList.add("hidden");
+ document.getElementById("loginBox").classList.remove("hidden");
+ document.getElementById("pinInput").value="";
+ renderHistory();
+});
+
+document.getElementById("addMemberButton").addEventListener("click",()=>{
+ if(!isAdmin)return;
+ const input=document.getElementById("memberName");
+ const name=input.value.trim();
+ if(!name){showMessage("memberMessage","Дебатшының атын енгіз.",true);return;}
+ if(data.members.some(m=>m.name.toLocaleLowerCase()===name.toLocaleLowerCase())){
+  showMessage("memberMessage","Бұл дебатшы бұрын тіркелген.",true);return;
+ }
+ data.members.push({id:"m_"+Date.now()+"_"+Math.random().toString(36).slice(2,8),name});
+ input.value="";
+ saveData();
+ showMessage("memberMessage","Дебатшы тіркелді.");
+});
+
+document.getElementById("saveRoundButton").addEventListener("click",()=>{
+ if(!isAdmin)return;
+ if(data.members.length<8){
+  showMessage("roundMessage","Бір раундқа кемінде 8 дебатшы тіркеу керек.",true);return;
+ }
+
+ const selected = RANKS.map(group=>({
+  rank:group.rank,
+  points:group.points,
+  memberIds:group.ids.map(id=>document.getElementById(id).value)
+ }));
+
+ if(selected.some(team=>team.memberIds.some(id=>!id))){
+  showMessage("roundMessage","Барлық 8 орынға қатысушыларды таңда.",true);return;
+ }
+
+ const ids=selected.flatMap(team=>team.memberIds);
+ if(new Set(ids).size!==8){
+  showMessage("roundMessage","Әр раундта 8 бөлек дебатшы болуы керек. Қайталанған адамды ауыстыр.",true);return;
+ }
+
+ const teams=selected.map(team=>({
+  rank:team.rank,
+  points:team.points,
+  memberIds:team.memberIds,
+  names:team.memberIds.map(id=>data.members.find(m=>m.id===id).name)
+ }));
+
+ const title=document.getElementById("roundTitle").value.trim() || ("Раунд "+(data.rounds.length+1));
+ data.rounds.push({
+  id:"r_"+Date.now()+"_"+Math.random().toString(36).slice(2,8),
+  title,
+  date:new Date().toLocaleDateString("kk-KZ"),
+  teams
+ });
+
+ document.getElementById("roundTitle").value="";
+ RANKS.forEach(group=>group.ids.forEach(id=>document.getElementById(id).value=""));
+ saveData();
+ showMessage("roundMessage","Раунд сақталды! Екі командаласқа да ұпай беріліп, рейтинг жаңартылды.");
+});
+
+render();
+</script>
+</body>
+</html>

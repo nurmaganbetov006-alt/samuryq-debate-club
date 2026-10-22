@@ -1,0 +1,54 @@
+﻿
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuryq Debate Club</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <a class="logo" href="index.html">SAMURYQ<span>DC</span></a>
+
+    <nav>
+        <a href="index.html">Р‘Р°СЃС‚С‹ Р±РµС‚</a>
+        <a href="about.html">РљР»СѓР± С‚СѓСЂР°Р»С‹</a>
+        <a href="rating.html">Р РµР№С‚РёРЅРі</a>
+        <a href="achievements.html">Р–РµС‚С–СЃС‚С–РєС‚РµСЂ</a>
+        <a href="tournaments.html">РўСѓСЂРЅРёСЂР»РµСЂ</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <p class="tag">THINK. SPEAK. WIN.</p>
+
+        <h1>
+            РЎУЁР—Р†ТўР”Р† РђР™Рў.<br>
+            <span>УЁР—Р“Р•Р Р†РЎ Р–РђРЎРђ.</span>
+        </h1>
+
+        <p class="description">
+            Samuryq Debate Club вЂ” РѕР№С‹ РµСЂРєС–РЅ, СЃУ©Р·С– РЅС‹Т›,
+            РјР°Т›СЃР°С‚С‹ Р±РёС–Рє РґРµР±Р°С‚С€С‹Р»Р°СЂ Т›Р°СѓС‹РјРґР°СЃС‚С‹Т“С‹.
+        </p>
+
+        <a href="about.html" class="button">
+            РљР›РЈР‘РџР•Рќ РўРђРќР«РЎРЈ в†’
+        </a>
+    </section>
+</main>
+
+<footer>
+    <div class="logo">SAMURYQ<span>DC</span></div>
+    <p>THINK. SPEAK. WIN.</p>
+    <p>В© 2026 Samuryq Debate Club</p>
+</footer>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,81 @@
+﻿
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Р–РµС‚С–СЃС‚С–РєС‚РµСЂ | Samuryq DC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <a class="logo" href="index.html">SAMURYQ<span>DC</span></a>
+    <nav>
+        <a href="index.html">Р‘Р°СЃС‚С‹ Р±РµС‚</a>
+        <a href="about.html">РљР»СѓР± С‚СѓСЂР°Р»С‹</a>
+        <a href="rating.html">Р РµР№С‚РёРЅРі</a>
+        <a class="active" href="achievements.html">Р–РµС‚С–СЃС‚С–РєС‚РµСЂ</a>
+        <a href="tournaments.html">РўСѓСЂРЅРёСЂР»РµСЂ</a>
+    </nav>
+</header>
+
+<main>
+    <section class="page-content">
+        <p class="tag">OUR ACHIEVEMENTS</p>
+        <h1 class="page-title">Р‘Р†Р—Р”Р†Тў <span>Р–Р•РўР†РЎРўР†РљРўР•Р </span></h1>
+
+        <p class="page-text">
+            Samuryq Debate Club Р¶РµС‚С–СЃС‚С–РєС‚РµСЂС– вЂ” РєР»СѓР± РјТЇС€РµР»РµСЂС–РЅС–ТЈ
+            РµТЈР±РµРіС–, С‚У™Р¶С–СЂРёР±РµСЃС– Р¶У™РЅРµ ТЇР·РґС–РєСЃС–Р· РґР°РјСѓС‹РЅС‹ТЈ РЅУ™С‚РёР¶РµСЃС–.
+        </p>
+
+        <div class="info-grid">
+            <article class="info-card">
+                <h3>рџЏ† РўСѓСЂРЅРёСЂР»С–Рє Р¶РµС‚С–СЃС‚С–РєС‚РµСЂ</h3>
+                <p>
+                    РљР»СѓР± РјТЇС€РµР»РµСЂС–РЅС–ТЈ С‚СѓСЂРЅРёСЂР»РµСЂРґРµРіС– РѕСЂС‹РЅРґР°СЂС‹,
+                    С„РёРЅР°Р»РґС‹Т› РєРµР·РµТЈРґРµСЂС– Р¶У™РЅРµ Р¶РµТЈС–СЃС‚РµСЂС– РѕСЃС‹ Р¶РµСЂРґРµ Р¶Р°СЂРёСЏР»Р°РЅР°РґС‹.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <h3>рџЋ¤ Т®Р·РґС–Рє СЃРїРёРєРµСЂР»РµСЂ</h3>
+                <p>
+                    РўСѓСЂРЅРёСЂР»РµСЂ РјРµРЅ РєР»СѓР±С‚С‹Т› РѕР№С‹РЅРґР°СЂРґР° ТЇР·РґС–Рє РЅУ™С‚РёР¶Рµ
+                    РєУ©СЂСЃРµС‚РєРµРЅ СЃРїРёРєРµСЂР»РµСЂ С‚СѓСЂР°Р»С‹ Р°Т›РїР°СЂР°С‚.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <h3>вљ–пёЏ РЎСѓРґСЊСЏР»С‹Т› Р¶РµС‚С–СЃС‚С–РєС‚РµСЂ</h3>
+                <p>
+                    Р”РµР±Р°С‚ С‚СѓСЂРЅРёСЂР»РµСЂС–РЅРґРµ С‚У©СЂРµС€С– СЂРµС‚С–РЅРґРµ Т›Р°С‚С‹СЃС‹Рї,
+                    С‚У™Р¶С–СЂРёР±Рµ Р¶РёРЅР°Т“Р°РЅ РєР»СѓР± РјТЇС€РµР»РµСЂС–.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <h3>рџ¤ќ РљР»СѓР±С‚С‹ТЈ РґР°РјСѓС‹</h3>
+                <p>
+                    Р–Р°ТЈР° РјТЇС€РµР»РµСЂ, Р±С–СЂР»РµСЃРєРµРЅ Р¶РѕР±Р°Р»Р°СЂ, РѕТ›Сѓ-Р¶Р°С‚С‚С‹Т“Сѓ
+                    Р¶РёС‹РЅРґР°СЂС‹ Р¶У™РЅРµ РєР»СѓР± Т±Р№С‹РјРґР°СЃС‚С‹СЂТ“Р°РЅ С–СЃ-С€Р°СЂР°Р»Р°СЂ.
+                </p>
+            </article>
+        </div>
+
+        <br><br>
+        <a href="index.html" class="button">в†ђ Р‘РђРЎРўР« Р‘Р•РўРљР•</a>
+    </section>
+</main>
+
+<footer>
+    <div class="logo">SAMURYQ<span>DC</span></div>
+    <p>THINK. SPEAK. WIN.</p>
+    <p>В© 2026 Samuryq Debate Club</p>
+</footer>
+
+</body>
+</html>
+
+

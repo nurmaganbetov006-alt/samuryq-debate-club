@@ -1,0 +1,461 @@
+
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Рандом | Samuryq DC</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#070912;--panel:#111525;--red:#ff304f;--blue:#4263ff;--text:#f5f6ff;--muted:#a5abc0;--border:#292e48}
+body{min-height:100vh;background:radial-gradient(ellipse at 80% 15%,#171a3b 0%,transparent 45%),var(--bg);color:var(--text);font-family:Arial,sans-serif}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;padding:22px 5%;border-bottom:1px solid var(--border)}
+.logo{color:var(--text);text-decoration:none;font-size:25px;font-weight:900;letter-spacing:2px}
+.logo span{color:var(--red)}
+nav{display:flex;flex-wrap:wrap;gap:6px}
+nav a{color:#d9dced;text-decoration:none;padding:10px;border-radius:7px;font-size:13px}
+nav a:hover,nav a.active{background:#20243a;color:white}
+main{width:min(1100px,92%);margin:40px auto}
+.tag{color:var(--red);font-size:12px;letter-spacing:4px;font-weight:bold;margin-bottom:14px}
+h1{font-size:clamp(34px,5vw,54px);margin-bottom:15px}
+h1 span{color:var(--red)}
+h2{font-size:21px;margin-bottom:15px}
+h3{font-size:16px;margin-bottom:10px}
+.muted{color:var(--muted);font-size:13px;line-height:1.7}
+.intro{color:var(--muted);line-height:1.8;margin-bottom:26px}
+.panel{background:rgba(17,21,37,.95);border:1px solid var(--border);border-radius:13px;padding:21px;margin-bottom:22px}
+.field{margin:13px 0}
+label{display:block;color:var(--muted);font-size:13px;margin-bottom:7px}
+input,select{width:100%;padding:12px;background:#090d1b;border:1px solid #363c59;border-radius:7px;color:white;font-size:14px}
+input:focus,select:focus{outline:1px solid var(--blue)}
+button{padding:12px 16px;background:linear-gradient(100deg,var(--red),#784cff,var(--blue));color:white;border:0;border-radius:7px;font-weight:bold;cursor:pointer}
+button:hover{filter:brightness(1.12)}
+.secondary{background:#252a42}
+.danger{background:#642538}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.person-list{list-style:none;margin-top:14px}
+.person-list li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+.small-btn{padding:7px 10px;font-size:12px}
+.message{margin-top:12px;color:#9be7b0;font-size:13px;line-height:1.7}
+.error{color:#ff8d9e}
+.hidden{display:none!important}
+.rule-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:20px 0}
+.rule{background:#090d1b;border:1px solid var(--border);border-radius:10px;padding:15px}
+.rule b{display:block;font-size:14px;margin:8px 0}
+.rule span{color:var(--muted);font-size:12px}
+.round-card{background:#090d1b;border:1px solid var(--border);border-radius:12px;padding:18px;margin-top:18px}
+.round-heading{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:15px}
+.room-heading{color:var(--muted);font-size:12px;letter-spacing:2px;margin:15px 0 10px}
+.role-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.role{border:1px solid var(--border);border-radius:9px;padding:14px;background:#111525}
+.role h4{font-size:13px;margin-bottom:10px}
+.role p{font-size:14px;line-height:1.7}
+.judge{padding:12px;margin-top:12px;border-radius:8px;background:#191e35;color:#f5c451;font-size:14px}
+.reserve{margin-top:12px;color:var(--muted);font-size:13px;line-height:1.7}
+footer{text-align:center;padding:25px;color:var(--muted);font-size:12px;border-top:1px solid var(--border)}
+@media(max-width:700px){header{justify-content:center}nav{justify-content:center}.two-col,.role-grid{grid-template-columns:1fr}.rule-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.panel{padding:15px}}
+@media print{header,#adminPanel,footer,.no-print{display:none!important}body{background:white;color:black}.panel,.round-card,.role{background:white;color:black;border-color:#ccc}.muted,.reserve{color:#444}}
+</style>
+</head>
+<body>
+
+<header>
+<a class="logo" href="index.html">SAMURYQ<span>DC</span></a>
+<nav>
+<a href="index.html">Басты бет</a>
+<a href="about.html">Клуб туралы</a>
+<a href="rating.html">Рейтинг</a>
+<a href="achievements.html">Жетістіктер</a>
+<a href="tournaments.html">Турнирлер</a>
+<a href="random.html" class="active">&#1056;андом</a>
+</nav>
+</header>
+
+<main>
+<p class="tag">BPF DRAW SYSTEM</p>
+<h1>РАУНД <span>РААНДОМЫ</span></h1>
+<p class="intro">
+Спикерлер мен төрешілерді тірке. Сайт дебатшыларды кездейсоқ командаларға
+бөліп, BPF позицияларын тағайындайды және бірнеше раундтың кестесін жасайды.
+</p>
+
+<section class="panel">
+<h2>📋 BPF позициялары</h2>
+<div class="rule-grid">
+<div class="rule"><span>1-ПОЗИЦИЯ</span><b>Ашушы үкімет</b><span>2 спикер</span></div>
+<div class="rule"><span>2-ПОЗИЦИЯ</span><b>Ашушы оппозиция</b><span>2 спикер</span></div>
+<div class="rule"><span>3-ПОЗИЦИЯ</span><b>Жабушы үкімет</b><span>2 спикер</span></div>
+<div class="rule"><span>4-ПОЗИЦИЯ</span><b>Жабушы оппозиция</b><span>2 спикер</span></div>
+</div>
+<p class="muted">Бір дебатқа 8 спикер қажет. Егер бір раундта 16 спикер болса, сайт оларды екі бөлек бөлмеге бөледі. 8-ге бөлінбей қалған адамдар сол раундта резервте қалады.</p>
+</section>
+
+<section class="panel">
+<h2>🔐 Ұйымдастырушының кіруі</h2>
+<p class="muted">Тіркелушілер, төрешілер және рандом жасау тек ұйымдастырушыға арналған.</p>
+<div id="loginBox">
+<div class="field">
+<label for="pinInput">Әкімші PIN-коды</label>
+<input id="pinInput" type="password" placeholder="PIN-кодты енгіз">
+</div>
+<button id="loginButton" type="button">Кіру</button>
+<p id="loginMessage" class="message error"></p>
+</div>
+
+<div id="adminPanel" class="hidden">
+<div class="two-col">
+<div>
+<h2>1. Спикер тіркеу</h2>
+<div class="field">
+<label for="speakerName">Спикердің аты-жөні</label>
+<input id="speakerName" placeholder="Аты-жөнін жаз">
+</div>
+<button type="button" id="addSpeakerButton">+ Спикер қосу</button>
+<p id="speakerMessage" class="message"></p>
+<ul id="speakerList" class="person-list"></ul>
+</div>
+
+<div>
+<h2>2. Төреші тіркеу</h2>
+<div class="field">
+<label for="judgeName">Төрешінің аты-жөні</label>
+<input id="judgeName" placeholder="Аты-жөнін жаз">
+</div>
+<button type="button" id="addJudgeButton">+ Төреші қосу</button>
+<p id="judgeMessage" class="message"></p>
+<ul id="judgeList" class="person-list"></ul>
+</div>
+</div>
+
+<hr style="border:0;border-top:1px solid #292e48;margin:25px 0">
+
+<h2>3. Қанша раунд жасаймыз?</h2>
+<div class="field">
+<label for="roundNumber">Раунд саны (1–10)</label>
+<input id="roundNumber" type="number" value="3" min="1" max="10">
+</div>
+<p class="muted">Әр раунд қайта араластырылады. Әр бөлмеде 4 команда болады, әр командада 2 спикер болады. Төреші сол раундта спикер болып тұрған адамнан таңдалмайды.</p>
+<div class="actions">
+<button id="drawButton" type="button">🎲 Рандом лақтыру</button>
+<button id="logoutButton" class="secondary" type="button">Шығу</button>
+</div>
+<p id="drawMessage" class="message"></p>
+</div>
+</section>
+
+<section class="panel">
+<div class="round-heading">
+<div>
+<h2>🎲 Рандом нәтижелері</h2>
+<p class="muted">Нәтижелер осы браузерде сақталады.</p>
+</div>
+<button class="secondary no-print" id="printButton" type="button">Басып шығару</button>
+</div>
+<div id="results">
+<p class="muted">Әзірге раунд жасалмаған.</p>
+</div>
+</section>
+</main>
+
+<footer>SAMURYQ DC · THINK. SPEAK. WIN.</footer>
+
+<script>
+/*
+  Уақытша жергілікті режим.
+  Бұл PIN интернеттегі нақты қауіпсіздік жүйесі емес.
+  Ұйымдастырушы үшін PIN-ді төмендегі мәннен ауыстыруға болады.
+*/
+const ADMIN_PIN = "2468";
+const STORAGE_KEY = "samuryq_bpf_random_v1";
+
+let state = {speakers:[], judges:[], rounds:[]};
+let isAdmin = false;
+
+try {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) {
+    const parsed = JSON.parse(saved);
+    state.speakers = Array.isArray(parsed.speakers) ? parsed.speakers : [];
+    state.judges = Array.isArray(parsed.judges) ? parsed.judges : [];
+    state.rounds = Array.isArray(parsed.rounds) ? parsed.rounds : [];
+  }
+} catch (error) {
+  console.error("Сақталған деректерді оқу мүмкін болмады:", error);
+}
+
+const roles = [
+  {name:"Ашушы үкімет", short:"АҮ", color:"#ff7890"},
+  {name:"Ашушы оппозиция", short:"АО", color:"#91a9ff"},
+  {name:"Жабушы үкімет", short:"ЖҮ", color:"#f5c451"},
+  {name:"Жабушы оппозиция", short:"ЖО", color:"#9be7b0"}
+];
+
+function safe(value) {
+  return String(value).replace(/[&<>"']/g, function(ch) {
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch];
+  });
+}
+
+function persist() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    render();
+  } catch (error) {
+    alert("Деректерді сақтау мүмкін болмады. Браузердегі Local Storage жұмысын тексер.");
+  }
+}
+
+function randomize(list) {
+  const result = list.slice();
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+function message(id, text, isError=false) {
+  const el = document.getElementById(id);
+  el.textContent = text;
+  el.classList.toggle("error", isError);
+}
+
+function normalized(name) {
+  return name.trim().toLocaleLowerCase();
+}
+
+function addPerson(kind, inputId, messageId) {
+  if (!isAdmin) return;
+
+  const input = document.getElementById(inputId);
+  const name = input.value.trim();
+  if (!name) {
+    message(messageId, "Алдымен аты-жөнін енгіз.", true);
+    return;
+  }
+
+  const all = [...state.speakers, ...state.judges];
+  if (all.some(person => normalized(person.name) === normalized(name))) {
+    message(messageId, "Бұл адам тізімде бар. Бір адамды екі рет қоспа.", true);
+    return;
+  }
+
+  const person = {
+    id: kind + "_" + Date.now() + "_" + Math.random().toString(36).slice(2,7),
+    name
+  };
+
+  if (kind === "speaker") state.speakers.push(person);
+  else state.judges.push(person);
+
+  input.value = "";
+  persist();
+  message(messageId, "Тіркелді: " + name);
+}
+
+function removePerson(kind, id) {
+  if (!isAdmin) return;
+
+  const collection = kind === "speaker" ? "speakers" : "judges";
+  const person = state[collection].find(p => p.id === id);
+  if (!person) return;
+
+  if (!confirm(person.name + " тізімнен өшірілсін бе?")) return;
+
+  state[collection] = state[collection].filter(p => p.id !== id);
+
+  // Бұрынғы жасалған раундтар тарихын өзгертпейміз.
+  persist();
+}
+
+function renderPersonLists() {
+  document.getElementById("speakerList").innerHTML =
+    state.speakers.map(p =>
+      '<li><span>' + safe(p.name) + '</span>' +
+      (isAdmin ? '<button class="danger small-btn" data-remove-speaker="' + safe(p.id) + '" type="button">Өшіру</button>' : '') +
+      '</li>'
+    ).join("") || '<li class="muted">Спикерлер әлі тіркелмеген.</li>';
+
+  document.getElementById("judgeList").innerHTML =
+    state.judges.map(p =>
+      '<li><span>' + safe(p.name) + '</span>' +
+      (isAdmin ? '<button class="danger small-btn" data-remove-judge="' + safe(p.id) + '" type="button">Өшіру</button>' : '') +
+      '</li>'
+    ).join("") || '<li class="muted">Төрешілер әлі тіркелмеген.</li>';
+
+  document.querySelectorAll("[data-remove-speaker]").forEach(button => {
+    button.addEventListener("click", () => removePerson("speaker", button.dataset.removeSpeaker));
+  });
+  document.querySelectorAll("[data-remove-judge]").forEach(button => {
+    button.addEventListener("click", () => removePerson("judge", button.dataset.removeJudge));
+  });
+}
+
+function makeRounds() {
+  if (!isAdmin) return;
+
+  if (state.speakers.length < 8) {
+    message("drawMessage", "Кемінде 8 спикер тірке. Бір BPF дебатына 8 адам қажет.", true);
+    return;
+  }
+
+  const count = Number(document.getElementById("roundNumber").value);
+  if (!Number.isInteger(count) || count < 1 || count > 10) {
+    message("drawMessage", "Раунд санын 1 мен 10 аралығында таңда.", true);
+    return;
+  }
+
+  const roomCount = Math.floor(state.speakers.length / 8);
+  const created = [];
+
+  for (let roundIndex = 0; roundIndex < count; roundIndex++) {
+    const shuffledSpeakers = randomize(state.speakers);
+    const activeCount = roomCount * 8;
+    const playing = shuffledSpeakers.slice(0, activeCount);
+    const reserves = shuffledSpeakers.slice(activeCount);
+    const activeNames = new Set(playing.map(p => normalized(p.name)));
+
+    // Сол раундта ойнап жатқан спикер төреші болып тағайындалмайды.
+    let eligibleJudges = randomize(
+      state.judges.filter(j => !activeNames.has(normalized(j.name)))
+    );
+
+    const rooms = [];
+
+    for (let roomIndex = 0; roomIndex < roomCount; roomIndex++) {
+      const group = playing.slice(roomIndex * 8, roomIndex * 8 + 8);
+      const teams = roles.map((role, roleIndex) => {
+        const pair = group.slice(roleIndex * 2, roleIndex * 2 + 2);
+        return {
+          role: role.name,
+          short: role.short,
+          members: pair.map(p => ({id:p.id, name:p.name}))
+        };
+      });
+
+      const judge = eligibleJudges.length ? eligibleJudges.pop() : null;
+
+      rooms.push({
+        roomNumber: roomIndex + 1,
+        teams,
+        judge: judge ? judge.name : null
+      });
+    }
+
+    created.push({
+      id: "round_" + Date.now() + "_" + roundIndex + "_" + Math.random().toString(36).slice(2,6),
+      title: "Раунд " + (state.rounds.length + roundIndex + 1),
+      date: new Date().toLocaleString("kk-KZ"),
+      rooms,
+      reserves: reserves.map(p => p.name)
+    });
+  }
+
+  state.rounds.push(...created);
+  persist();
+
+  const noJudgeRooms = created.reduce((total, round) =>
+    total + round.rooms.filter(room => !room.judge).length, 0);
+
+  let result = count + " раунд жасалды! Әр позицияға 2 спикерден бөлінді.";
+  if (noJudgeRooms) {
+    result += " " + noJudgeRooms + " бөлмеге төреші жетіспейді — төрешілер тізіміне адам қос.";
+  } else {
+    result += " Әр бөлмеге төреші таңдалды.";
+  }
+  if (state.speakers.length % 8 !== 0) {
+    result += " Бір раундта " + (state.speakers.length % 8) + " адам резервте қалады.";
+  }
+  message("drawMessage", result, noJudgeRooms > 0);
+}
+
+function renderResults() {
+  const box = document.getElementById("results");
+
+  if (!state.rounds.length) {
+    box.innerHTML = '<p class="muted">Әзірге раунд жасалмаған.</p>';
+    return;
+  }
+
+  box.innerHTML = state.rounds.map(round => {
+    const roomsHTML = round.rooms.map(room => {
+      const teamsHTML = room.teams.map(team =>
+        '<div class="role">' +
+          '<h4>' + safe(team.role) + '</h4>' +
+          '<p>' + safe(team.members.map(m => m.name).join(" + ")) + '</p>' +
+        '</div>'
+      ).join("");
+
+      return '<p class="room-heading">БӨЛМЕ ' + room.roomNumber + '</p>' +
+        '<div class="role-grid">' + teamsHTML + '</div>' +
+        '<div class="judge">⚖️ Төреші: ' +
+          (room.judge ? safe(room.judge) : "Төреші тағайындалмады — тізімге төреші қосу керек") +
+        '</div>';
+    }).join("");
+
+    const reservesHTML = round.reserves.length
+      ? '<p class="reserve">Резервте: ' + round.reserves.map(safe).join(", ") + '</p>'
+      : "";
+
+    return '<article class="round-card">' +
+      '<div class="round-heading"><h2>' + safe(round.title) + '</h2>' +
+      '<span class="muted">' + safe(round.date) + '</span></div>' +
+      roomsHTML + reservesHTML +
+      '</article>';
+  }).join("");
+}
+
+function render() {
+  renderPersonLists();
+  renderResults();
+}
+
+document.getElementById("loginButton").addEventListener("click", () => {
+  if (document.getElementById("pinInput").value === ADMIN_PIN) {
+    isAdmin = true;
+    document.getElementById("loginBox").classList.add("hidden");
+    document.getElementById("adminPanel").classList.remove("hidden");
+    document.getElementById("pinInput").value = "";
+    render();
+    message("loginMessage", "");
+  } else {
+    message("loginMessage", "PIN-код дұрыс емес.", true);
+  }
+});
+
+document.getElementById("pinInput").addEventListener("keydown", e => {
+  if (e.key === "Enter") document.getElementById("loginButton").click();
+});
+
+document.getElementById("logoutButton").addEventListener("click", () => {
+  isAdmin = false;
+  document.getElementById("adminPanel").classList.add("hidden");
+  document.getElementById("loginBox").classList.remove("hidden");
+  render();
+  message("loginMessage", "Басқару бөлімінен шықтың.");
+});
+
+document.getElementById("addSpeakerButton").addEventListener("click", () => {
+  addPerson("speaker", "speakerName", "speakerMessage");
+});
+
+document.getElementById("addJudgeButton").addEventListener("click", () => {
+  addPerson("judge", "judgeName", "judgeMessage");
+});
+
+document.getElementById("speakerName").addEventListener("keydown", e => {
+  if (e.key === "Enter") document.getElementById("addSpeakerButton").click();
+});
+
+document.getElementById("judgeName").addEventListener("keydown", e => {
+  if (e.key === "Enter") document.getElementById("addJudgeButton").click();
+});
+
+document.getElementById("drawButton").addEventListener("click", makeRounds);
+document.getElementById("printButton").addEventListener("click", () => window.print());
+
+render();
+</script>
+</body>
+</html>
